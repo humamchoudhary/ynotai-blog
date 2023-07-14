@@ -2,26 +2,55 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  margin: 0 auto;
+  overflow-x: hidden;
+}
+:root {
+  --Dark: #2b2d42;
+  --DarkBlue: #03045e;
+  --CTA: #00aeff;
+  --Light: #f6fff8;
+}
+.cta {
+  color: white;
+  border: 2px solid var(--CTA);
+  background-color: var(--CTA);
+  font-weight: 700;
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  transition: all ease 300ms;
+}
+.cta:hover {
+  color: var(--CTA);
+  border: 2px solid var(--CTA);
+  background-color: transparent;
+}
+
+.test {
+  width: fit-content;
+}
+
+.Card {
+  min-height: 400px;
+  background-color: #90e1ef;
+  border-radius: 10px;
+  padding: 10px 10px;
+  border: transparent solid 3px;
+  transition: all 150ms ease-in-out;
+}
+.Card ul {
+  list-style: none;
+}
+.Card:hover {
+  background-color: #90e1ef2f;
+  border: #90e1ef solid 3px;
+}
+.Card ul li p {
+  color: white;
+}
+
+.user_prof {
+  height: 218px;
+  width: 218px;
 }
