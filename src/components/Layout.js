@@ -8,9 +8,7 @@ const poppins = Poppins({
 });
 export default function Layout({ children, main, span, sub }) {
   return (
-    <main
-      className={`flex min-h-screen flex-col  justify-between  ${poppins.className}`}
-    >
+    <main className={`flex min-h-screen flex-col  justify-between  `}>
       <Header />
       <div className=" px-6 py-3 min-h-[3rem] w-screen lg:px-[364px]  sm:px-6">
         {children}

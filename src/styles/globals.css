@@ -2,9 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
 body {
   margin: 0 auto;
   overflow-x: hidden;
+  font-family: "Poppins", sans-serif;
 }
 :root {
   --Dark: #2b2d42;
@@ -25,6 +28,8 @@ body {
   color: var(--CTA);
   border: 2px solid var(--CTA);
   background-color: transparent;
+}
+p {
 }
 
 .test {
