@@ -27,7 +27,7 @@ function Login() {
     >
       <Image src={"/images/logo.svg"} width={200} height={100} />
       <div className="flex flex-col w-1/5">
-        <div className="text-center mb-10 font-semibold text-4xl">
+        <div className="text-center mb-10 font-semibold cusText-3xl  ">
           Welcome Back
         </div>
         <div className="flex flex-row items-center px-4 py-[5px]   my-2 border-2  rounded-lg">

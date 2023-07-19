@@ -3,11 +3,22 @@
 @tailwind utilities;
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@layer base{
 
-body {
-  margin: 0 auto;
-  overflow-x: hidden;
-  font-family: "Poppins", sans-serif;
+  body {
+    margin: 0 auto;
+    overflow-x: hidden;
+    font-family: "Poppins", sans-serif;
+}
+}
+.cusText-3xl{
+  @apply 2xl:text-3xl text-base lg:text-2xl
+}
+.cusText-md{
+  @apply 2xl:text-base lg:text-xs  text-xs
+}
+.cusText-head{
+  @apply 2xl:text-xl lg:text-sm
 }
 :root {
   --Dark: #2b2d42;
