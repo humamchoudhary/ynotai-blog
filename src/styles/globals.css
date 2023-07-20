@@ -59,3 +59,26 @@ p {
   height: 218px;
   width: 218px;
 }
+
+.loader {
+  margin: 0 0 2em;
+  height: 100px;
+  width: 20%;
+  text-align: center;
+  padding: 1em;
+  margin: 0 auto 1em;
+  display: inline-block;
+  vertical-align: top;
+}
+
+/*
+  Set the color of the icon
+*/
+.loader-CTA svg path,
+.loader-CTA svg rect {
+  fill: var(--CTA);
+}
+.loader-WHITE svg path,
+.loader-WHITE svg rect {
+  fill: var(--Light);
+}
