@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { Global, css } from '@emotion/react';
-import { CKEditor } from '@ckeditor/ckeditor5-react';
-import BalloonBlockEditor from 'ckeditor5-custom-build/build/ckeditor';
+import React, { useState } from "react";
+import { Global, css } from "@emotion/react";
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import BalloonBlockEditor from "ckeditor5-custom-build/build/ckeditor";
 
 const TinyMceEditor = () => {
-  const [bdata,setbData] = useState('')
+  const [bdata, setbData] = useState("");
   const ckWrapperStyle = css`
     position: relative;
     z-index: 1;
@@ -60,73 +60,72 @@ const TinyMceEditor = () => {
         config={{
           toolbar: {
             items: [
-              'bold',
-              'italic',
-              'underline',
-              'link',
-              '|',
-              'heading',
-              '|',
-              'code',
-              'blockQuote',
-            ]
+              "bold",
+              "italic",
+              "underline",
+              "link",
+              "|",
+              "heading",
+              "|",
+              "code",
+              
+              "blockQuote",
+            ],
           },
-          language: 'en',
+          language: "en",
           blockToolbar: [
-            'undo',
-            'redo',
-            '|',
-            'heading',
-            '|',
-            'imageUpload',
-            'imageInsert',
-            'mediaEmbed',
-            'code',
-            'blockQuote',
-            '|',
-            'insertTable',
-            'numberedList',
-            'bulletedList',
-            'outdent',
-            'indent',
-
+            "undo",
+            "redo",
+            "|",
+            "heading",
+            "|",
+            "imageUpload",
+            "imageInsert",
+            "mediaEmbed",
+            "code",
+            "blockQuote",
+            "|",
+            "insertTable",
+            "numberedList",
+            "bulletedList",
+            "outdent",
+            "indent",
           ],
           image: {
             toolbar: [
-              'imageTextAlternative',
-              'toggleImageCaption',
-              'imageStyle:inline',
-              'imageStyle:block',
-              'imageStyle:side'
-            ]
+              "imageTextAlternative",
+              "toggleImageCaption",
+              "imageStyle:inline",
+              "imageStyle:block",
+              "imageStyle:side",
+            ],
           },
           table: {
-            contentToolbar: [
-              'tableColumn',
-              'tableRow',
-              'mergeTableCells'
-            ]
+            contentToolbar: ["tableColumn", "tableRow", "mergeTableCells"],
           },
         }}
         onInit={(editor) => {
           // You can store the "editor" and use when it is needed.
-          console.log('Editor is ready to use!', editor);
-          console.log('toolbar:', Array.from(editor.ui.componentFactory.names()));
+          console.log("Editor is ready to use!", editor);
           console.log(
-            'plugins:',
+            "toolbar:",
+            Array.from(editor.ui.componentFactory.names())
+          );
+          console.log(
+            "plugins:",
             ClassicEditor.builtinPlugins.map((plugin) => plugin.pluginName)
           );
         }}
         onChange={(e, editor) => {
           const data = editor.getData();
-          setbData(data)
+          setbData(data);
           console.log({ e, editor, data });
         }}
         onBlur={(editor) => {
-          console.log('Blur.', editor);
+          console.log("Blur.", editor);
         }}
         onFocus={(editor) => {
-          console.log('Focus.', editor);
+          console.log("Focus.", editor);
         }}
         react // Enable React framework integration
       />
@@ -134,7 +133,5 @@ const TinyMceEditor = () => {
     </div>
   );
 };
-
-
 
 export default TinyMceEditor;

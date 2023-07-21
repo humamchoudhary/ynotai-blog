@@ -7,6 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import signUp from "@/firebase/auth/signup";
 import { useRouter } from "next/navigation";
+import Loader from "@/components/Loader";
 
 function signupPage() {
   const [username, setUsername] = useState();
@@ -14,39 +15,40 @@ function signupPage() {
   const [password, setPassword] = useState();
   const [occu, setOccu] = useState();
   const [loading, setLoading] = useState(false);
-  const [errorStop, setErrorStop] = useState("Hello");
+  const [errorStop, setErrorStop] = useState();
   const router = useRouter();
 
   async function handleSignUp() {
     if (username && password && occu && email) {
       setLoading(true);
-      const { result, error } = await signUp(email, password);
+      const { result, error } = await signUp(email, password, username, occu);
       console.log(result);
       console.log(error);
       setLoading(false);
       if (!error) {
         return router.push("/login");
       } else {
-        setErrorStop(error);
+        setErrorStop(error.message);
       }
     } else {
       console.log("empty");
-      setErrorStop(true);
+      setErrorStop("Please Fill All Feilds");
     }
   }
+  9;
 
   return (
     <div
-      className={`flex flex-col w-screen h-screen bg-bg justify-between items-center py-14 `}
+      className={`flex flex-col w-screen h-screen bg-bg justify-between items-center py-4 lg:py-8 2xl:py-14  `}
     >
       <Image src={"/images/logo.svg"} width={200} height={100} />
       <div className="flex flex-col w-1/5">
-        <div className="text-center mb-10 font-semibold cusText-3xl">
+        <div className="text-center lg:mb-1 2xl:mb-5 font-semibold cusText-3xl">
           Let Get Started!
         </div>
 
         {errorStop && (
-          <div className="text-center mb-10 font-normal text-red-500 cusText-3xl">
+          <div className="text-center mb-1 font-normal text-red-500 cusText-head">
             {errorStop}
           </div>
         )}
@@ -54,13 +56,13 @@ function signupPage() {
         <div className="flex flex-row items-center px-4 py-[5px]   my-2 border-2  rounded-lg">
           <AiOutlineUser size={28} className="text-CTA " />
           <Input
-            placeholder="Username"
+            placeholder="Display Name"
             bordered={false}
             value={username}
             onChange={(e) => {
               setUsername(e.target.value);
             }}
-            className="font-normal text-2xl"
+            className="font-normal cusText-head"
           />
         </div>
         <div className="flex flex-row items-center px-4 py-[5px]   my-2 border-2  rounded-lg">
@@ -72,7 +74,7 @@ function signupPage() {
             onChange={(e) => {
               setEmail(e.target.value);
             }}
-            className="font-normal text-2xl"
+            className="font-normal cusText-head"
           />
         </div>
         <div className="flex flex-row items-center px-4 py-[5px]   my-2 border-2  rounded-lg">
@@ -84,7 +86,7 @@ function signupPage() {
             onChange={(e) => {
               setOccu(e.target.value);
             }}
-            className="font-normal text-2xl"
+            className="font-normal cusText-head"
           />
         </div>
         <div className="flex flex-row items-center px-4 py-[5px]   my-2 border-2   rounded-lg">
@@ -99,14 +101,14 @@ function signupPage() {
               setPassword(e.target.value);
             }}
             type="password"
-            className="font-normal text-2xl "
+            className="font-normal cusText-head "
           />
         </div>
         <div
           onClick={() => {
             handleSignUp();
           }}
-          className="bg-CTA text-center py-4 rounded-sm mt-4 text-Light hover:cursor-pointer"
+          className="bg-CTA text-center py-2 2xl:py-4 rounded-sm mt-4 text-Light rounded-sm hover:cursor-pointer"
         >
           {loading ? <Loader clasname={"loader-WHITE"} /> : "Signup"}
         </div>
@@ -119,8 +121,10 @@ function signupPage() {
         </div>
       </div>
       <div className="flex flex-row gap-4">
-        <p className="text-CTA font-semibold text-lg">Terms & Conditions</p> |{" "}
-        <p className="text-CTA font-semibold text-lg">Privacy Policy</p>
+        <p className="text-CTA font-semibold cusText-head">
+          Terms & Conditions
+        </p>{" "}
+        | <p className="text-CTA font-semibold cusText-head">Privacy Policy</p>
       </div>
     </div>
   );
