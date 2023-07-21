@@ -13,14 +13,25 @@ function signupPage() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [occu, setOccu] = useState();
+  const [loading, setLoading] = useState(false);
+  const [errorStop, setErrorStop] = useState("Hello");
   const router = useRouter();
 
   async function handleSignUp() {
     if (username && password && occu && email) {
+      setLoading(true);
       const { result, error } = await signUp(email, password);
       console.log(result);
       console.log(error);
-      return router.push("/login");
+      setLoading(false);
+      if (!error) {
+        return router.push("/login");
+      } else {
+        setErrorStop(error);
+      }
+    } else {
+      console.log("empty");
+      setErrorStop(true);
     }
   }
 
@@ -33,6 +44,13 @@ function signupPage() {
         <div className="text-center mb-10 font-semibold text-4xl">
           Let Get Started!
         </div>
+
+        {errorStop && (
+          <div className="text-center mb-10 font-normal text-red-500 text-4xl">
+            {errorStop}
+          </div>
+        )}
+
         <div className="flex flex-row items-center px-4 py-[5px]   my-2 border-2  rounded-lg">
           <AiOutlineUser size={28} className="text-CTA " />
           <Input
@@ -90,7 +108,7 @@ function signupPage() {
           }}
           className="bg-CTA text-center py-4 rounded-sm mt-4 text-Light hover:cursor-pointer"
         >
-          Signup
+          {loading ? <Loader clasname={"loader-WHITE"} /> : "Signup"}
         </div>
         <div className="flex flex-row text-center my-3 mx-auto font-light">
           Already have a account?{" "}
