@@ -41,12 +41,12 @@ function signupPage() {
     >
       <Image src={"/images/logo.svg"} width={200} height={100} />
       <div className="flex flex-col w-1/5">
-        <div className="text-center mb-10 font-semibold text-4xl">
+        <div className="text-center mb-10 font-semibold cusText-3xl">
           Let Get Started!
         </div>
 
         {errorStop && (
-          <div className="text-center mb-10 font-normal text-red-500 text-4xl">
+          <div className="text-center mb-10 font-normal text-red-500 cusText-3xl">
             {errorStop}
           </div>
         )}
