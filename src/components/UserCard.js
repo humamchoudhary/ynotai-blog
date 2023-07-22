@@ -1,5 +1,5 @@
 import getData from "@/firebase/firestore/getData";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Avatar from "./avatar";
 
 function UserCard({
@@ -9,10 +9,15 @@ function UserCard({
 }) {
   const [username, setUsername] = useState();
   const [occu, setOccu] = useState();
-  getData("Users", data.writerId).then(({ result }) => {
-    setUsername(result.name);
-    setOccu(result.occu);
-  });
+  useEffect(() => {
+    if (data) {
+      getData("Users", data.writerId).then(({ result }) => {
+        setUsername(result.name);
+        setOccu(result.occu);
+      });
+    }
+  }, [data]);
+
   return (
     <div className="flex flex-row items-center justify-start mb-4">
       <Avatar name={username} className={avatarStyle} />

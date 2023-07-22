@@ -2,10 +2,23 @@ import { FiMenu } from "react-icons/fi";
 import { AiOutlineClose } from "react-icons/ai";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
+import { LuEdit } from "react-icons/lu";
 
 export default function Header() {
   const [isopen, setOpen] = useState(false);
-  
+
+  const router = useRouter();
+  const [isBlogActive, setBlogActive] = useState(false);
+  useEffect(() => {
+    const { userData } = JSON.parse(localStorage.getItem("userData"));
+    if (router && router.pathname.includes("blog")) {
+      if (userData.canWrite) {
+        setBlogActive(true);
+      }
+    }
+  }, [router]);
+
   return (
     <div className="  flex flex-row fixed justify-between items-center text-center border-gray-200 border-b-[3px] px-6 py-3 lg:py-1 2xl:py-3 min-h-[1rem] 2xl:min-h-[3rem] w-screen lg:px-[182px] 2xl:px-[364px] bg-white text-black z-50">
       {/* <h1 className="text-4xl font-bold">LOGO</h1> */}
@@ -44,21 +57,33 @@ export default function Header() {
           Contact
         </Link>
       </div>
-      <div
-        className={`flex flex-col gap-5 justify-center items-center font-semibold fixed top-12
+      {!isBlogActive ? (
+        <div
+          className={`flex flex-col gap-5 justify-center items-center font-semibold fixed top-12
       transition-all cusText-head
        ${
          isopen ? "left-0" : "left-full"
        } bg-white w-screen h-screen lg:relative lg:left-0 lg:w-max font-semibold lg:h-max lg:flex-row lg:top-0 sm:left-0`}
-      >
-        <Link href="/" style={{ color: "black" }}>
-          Log in
-        </Link>
+        >
+          <Link href="/" style={{ color: "black" }}>
+            Log in
+          </Link>
 
-        <Link href="/" className="cta">
-          Sign up
-        </Link>
-      </div>
+          <Link href="/" className="cta">
+            Sign up
+          </Link>
+        </div>
+      ) : (
+        <div
+          onClick={() => {
+            router.push("/write");
+          }}
+          className="flex flex-row gap-2 items-center justify-center text-md border-2 border-gray-500 px-3 py-2 rounded-full hover:cursor-pointer hover:bg-gray-500 duration-200 hover:text-Light"
+        >
+          <LuEdit className="w-5 h-5" />
+          Write
+        </div>
+      )}
     </div>
   );
 }

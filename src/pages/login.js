@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Input } from "antd";
 import { AiOutlineMail } from "react-icons/ai";
 import { FiLock } from "react-icons/fi";
 import Image from "next/image";
 import Link from "next/link";
 import signIn from "@/firebase/auth/signin";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/router";
 import Loader from "@/components/Loader";
+import { useAuthContext } from "@/context/AuthContext";
 
 function Login() {
   const [email, setEmail] = useState();
@@ -18,11 +19,21 @@ function Login() {
   async function handleSignIn() {
     if (password && email) {
       const { result, error } = await signIn(email, password);
-      console.log(result);
-      console.log(error);
-      return router.push("/login");
+
+      if (error) {
+        setErrorStop(error);
+      } else if (router.query.redir) {
+        router.push(`/${router.query.redir}`);
+      } else {
+        router.push("/blog");
+      }
     }
   }
+  useEffect(() => {
+    if (router) {
+      console.log(router);
+    }
+  }, [router]);
 
   return (
     <div

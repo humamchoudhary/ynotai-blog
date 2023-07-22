@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Global, css } from "@emotion/react";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import BalloonBlockEditor from "ckeditor5-custom-build/build/ckeditor";
+import MyCustomUploadAdapterPlugin from "@/adapter/MyCustomeAdapter";
 
-const TinyMceEditor = () => {
-  const [bdata, setbData] = useState("");
+const TinyMceEditor = ({ setbData }) => {
   const ckWrapperStyle = css`
     position: relative;
     z-index: 1;
@@ -56,8 +56,10 @@ const TinyMceEditor = () => {
       />
       <CKEditor
         editor={BalloonBlockEditor}
-        data="<p>Hello from CKEditor 5!</p><p>Editor is ready, try to interact with it!</p>"
+        data=""
         config={{
+          placeholder: "Type the content hereasd !",
+
           toolbar: {
             items: [
               "bold",
@@ -68,7 +70,7 @@ const TinyMceEditor = () => {
               "heading",
               "|",
               "code",
-              
+
               "blockQuote",
             ],
           },
@@ -91,6 +93,7 @@ const TinyMceEditor = () => {
             "outdent",
             "indent",
           ],
+
           image: {
             toolbar: [
               "imageTextAlternative",
@@ -103,33 +106,15 @@ const TinyMceEditor = () => {
           table: {
             contentToolbar: ["tableColumn", "tableRow", "mergeTableCells"],
           },
-        }}
-        onInit={(editor) => {
-          // You can store the "editor" and use when it is needed.
-          console.log("Editor is ready to use!", editor);
-          console.log(
-            "toolbar:",
-            Array.from(editor.ui.componentFactory.names())
-          );
-          console.log(
-            "plugins:",
-            ClassicEditor.builtinPlugins.map((plugin) => plugin.pluginName)
-          );
+          initialData: "",
+          extraPlugins: [MyCustomUploadAdapterPlugin],
         }}
         onChange={(e, editor) => {
           const data = editor.getData();
           setbData(data);
-          console.log({ e, editor, data });
         }}
-        onBlur={(editor) => {
-          console.log("Blur.", editor);
-        }}
-        onFocus={(editor) => {
-          console.log("Focus.", editor);
-        }}
-        react // Enable React framework integration
+        react
       />
-      {bdata}
     </div>
   );
 };
