@@ -11,11 +11,15 @@ export default function Header() {
   const router = useRouter();
   const [isBlogActive, setBlogActive] = useState(false);
   useEffect(() => {
-    const { userData } = JSON.parse(localStorage.getItem("userData"));
-    if (router && router.pathname.includes("blog")) {
-      if (userData.canWrite) {
-        setBlogActive(true);
+    try {
+      const { userData } = JSON.parse(localStorage.getItem("userData"));
+      if (router && router.pathname.includes("blog")) {
+        if (userData.canWrite) {
+          setBlogActive(true);
+        }
       }
+    } catch {
+      setBlogActive(false);
     }
   }, [router]);
 

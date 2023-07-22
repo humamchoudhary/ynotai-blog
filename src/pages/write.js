@@ -58,11 +58,13 @@ function write() {
 
   useEffect(() => {
     console.log(user);
-    const curruser = JSON.parse(localStorage.getItem("userData")).userData;
-    setcuruser(JSON.parse(localStorage.getItem("userData")).userData);
-    if ((!user && curruser) || !curruser.canWrite) {
-      router.push("/login?redir=write");
-    }
+    try {
+      const curruser = JSON.parse(localStorage.getItem("userData")).userData;
+      setcuruser(JSON.parse(localStorage.getItem("userData")).userData);
+      if ((!user && curruser) || !curruser.canWrite) {
+        router.push("/login?redir=write");
+      }
+    } catch {}
     getAllData("categories").then(({ result }) => {
       setAllCat(result);
     });

@@ -13,8 +13,6 @@ export default function Blog() {
   const [blog, setBlog] = useState([]);
   const [trendBlogs, setTrendBlogs] = useState();
   const [trendUsers, setTrendUsers] = useState([]);
-  const [userData, setUserData] = useState();
-  const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState();
   useEffect(() => {
     const handleScroll = () => {
@@ -32,10 +30,7 @@ export default function Blog() {
   useEffect(() => {
     async function initData() {
       setLoading(true);
-      const data = localStorage.getItem("userData");
-      if (data) {
-        setUserData(JSON.parse(data));
-      }
+     
       await getAllData("blogs").then(({ result, error }) => {
         setBlog(result);
       });
