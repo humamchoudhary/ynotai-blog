@@ -1,5 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
+import firebase_app from "@/firebase/config";
 import {
   getStorage,
   ref,
@@ -7,7 +8,8 @@ import {
   getDownloadURL,
 } from "firebase/storage";
 import { v4 } from "uuid";
-const storage = getStorage();
+
+const storage = getStorage(firebase_app);
 
 export default function handler(req, res) {
   try {
@@ -25,7 +27,6 @@ export default function handler(req, res) {
         return res.status(200).json({ url: _ });
       });
     });
-   
   } catch (error) {
     console.error("Error handling image upload:", error);
     return res.status(500).json({ error: "Failed to upload image" });
