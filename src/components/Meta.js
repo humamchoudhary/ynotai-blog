@@ -41,11 +41,7 @@ const Meta = ({
       />
       <link rel="manifest" href="/site.webmanifest" />
       <title>{title}</title>
-      <script
-        async
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9328291760918079"
-        crossorigin="anonymous"
-      ></script>
+      
     </Head>
   );
 };
