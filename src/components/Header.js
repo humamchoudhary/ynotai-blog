@@ -69,11 +69,11 @@ export default function Header() {
          isopen ? "left-0" : "left-full"
        } bg-white w-screen h-screen lg:relative lg:left-0 lg:w-max font-semibold lg:h-max lg:flex-row lg:top-0 sm:left-0`}
         >
-          <Link href="/" style={{ color: "black" }}>
+          <Link href="/login?redir=blog" style={{ color: "black" }}>
             Log in
           </Link>
 
-          <Link href="/" className="cta">
+          <Link href="/signup" className="cta">
             Sign up
           </Link>
         </div>
