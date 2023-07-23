@@ -58,7 +58,7 @@ const TinyMceEditor = ({ setbData }) => {
         editor={BalloonBlockEditor}
         data=""
         config={{
-          placeholder: "Type the content hereasd !",
+          placeholder: "Type the content here!",
 
           toolbar: {
             items: [

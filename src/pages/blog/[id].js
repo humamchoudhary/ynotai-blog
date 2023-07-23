@@ -103,12 +103,7 @@ export default function template() {
                     </div>
                   </div>
                 </div>
-                <p className=" italic 2xl:text-2xl">{blog.punchLine}</p>
-                <img
-                  src={blog.image}
-                  alt={blog.title}
-                  className="h-auto max-w-full object-cover"
-                />
+               
               </div>
             )}
 
