@@ -29,8 +29,6 @@ export default function Blog() {
 
   useEffect(() => {
     async function initData() {
-      setLoading(true);
-     
       await getAllData("blogs").then(({ result, error }) => {
         setBlog(result);
       });
@@ -40,8 +38,6 @@ export default function Blog() {
 
   useEffect(() => {
     async function getTrendings() {
-      setLoading(false);
-
       const trendingUsersData = await getData("trending", "trendingUsers");
       setTrendUsers(trendingUsersData.result.writerId);
 
@@ -54,7 +50,6 @@ export default function Blog() {
       );
 
       setTrendBlogs(data);
-      setLoading(true);
     }
 
     getTrendings();
@@ -133,7 +128,7 @@ export default function Blog() {
                     <div className="flex items-center border-b-[2.5px] border-gray-200 py-6 justify-between">
                       <div>
                         <UserCard data={item.data} />
-                        <Link href={`/blogs/${encodeURIComponent(item.id)}`}>
+                        <Link href={`/blog/${item.id}`}>
                           <h3 className="line-clamp-2 cusText-3xl text-gray-900 font-semibold mb-3">
                             {item.data.title}
                           </h3>
@@ -151,9 +146,7 @@ export default function Blog() {
                         </div>
                       </div>
                       <div className="ml-6 sm:ml-8 shrink-0">
-                        <Link
-                          href={`/blogs/${encodeURIComponent(item.data.title)}`}
-                        >
+                        <Link href={`/blog/${item.id}`}>
                           <img
                             src={item.data.image}
                             alt={item.data.title}
@@ -212,9 +205,7 @@ export default function Blog() {
                           </h2>
                         </div>
                         <div>
-                          <Link
-                            href={`/blogs/${encodeURIComponent(item.title)}`}
-                          >
+                          <Link href={`/blog/${item.id}`}>
                             <h4 className="line-clamp-2 text-md leading-[1.15rem]  text-gray-900 font-semibold mb-2">
                               {item.title}
                             </h4>

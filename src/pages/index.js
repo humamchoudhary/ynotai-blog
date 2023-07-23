@@ -1,10 +1,16 @@
 import Loader from "@/components/Loader";
 import { Inter } from "next/font/google";
-const inter = Inter({ subsets: ["latin"] });
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 export default function Home() {
+  const router = useRouter();
+  useEffect(() => {
+    router.push("/blog");
+  }, []);
+
   return (
-    <div className="flex h-32  bg-black items-center justify-center">
+    <div className="flex h-screen w-screen items-center justify-center">
       <Loader clasname={"loader-CTA "} />
     </div>
   );

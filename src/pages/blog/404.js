@@ -2,7 +2,7 @@ import Header from "@/components/Header";
 import Layout from "@/components/Layout";
 import Link from "next/link";
 import React from "react";
-import Head from 'next/head';
+import Head from "next/head";
 function NotFoundPage() {
   return (
     <>
@@ -12,7 +12,7 @@ function NotFoundPage() {
       <Layout>
         <main class="grid h-screen place-items-center  px-6 py-24 sm:py-32 lg:px-8">
           <div class="text-center">
-            <p class="text-base font-semibold text-indigo-600">404</p>
+            <p class="text-base font-semibold text-CTA">404</p>
             <h1 class="mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">
               Page not found
             </h1>
@@ -22,7 +22,7 @@ function NotFoundPage() {
             <div class="mt-10 flex items-center justify-center gap-x-6">
               <Link
                 href="/blog"
-                class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                class="rounded-md bg-CTA px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-opacity-90 duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-CTA"
               >
                 Go back Blog Home page
               </Link>
