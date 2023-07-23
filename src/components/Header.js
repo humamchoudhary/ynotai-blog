@@ -54,8 +54,8 @@ export default function Header() {
         <Link href="/blog" style={{ color: "black" }}>
           Blog
         </Link>
-        <Link href="/portfolio" style={{ color: "black", margin: "0 20" }}>
-          Portfolio
+        <Link href="/aboutus" style={{ color: "black", margin: "0 20" }}>
+          About Us
         </Link>
         <Link href="/" style={{ color: "black" }}>
           Contact
