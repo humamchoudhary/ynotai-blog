@@ -2,6 +2,7 @@ import { AuthContextProvider } from "@/context/AuthContext";
 import dynamic from "next/dynamic";
 const Header = dynamic(() => import("./Header"));
 import { Poppins } from "next/font/google";
+import Meta from "./Meta";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -10,9 +11,9 @@ const poppins = Poppins({
 export default function Layout({ children, main, span, sub }) {
   return (
     <main className={`flex min-h-screen flex-col  justify-between  `}>
-      <Header />
+      <Meta />
       <div className=" px-6 py-3 min-h-[3rem] w-screen lg:px-[182px] 2xl:px-[364px]  sm:px-6 duration-300">
-   {children}
+        {children}
       </div>
       {/* <Footer /> */}
     </main>

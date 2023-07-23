@@ -8,6 +8,7 @@ import signIn from "@/firebase/auth/signin";
 import { useRouter } from "next/router";
 import Loader from "@/components/Loader";
 import { useAuthContext } from "@/context/AuthContext";
+import Meta from "@/components/Meta";
 
 function Login() {
   const [email, setEmail] = useState();
@@ -36,6 +37,9 @@ function Login() {
   }, [router]);
 
   return (
+    <>
+    <Meta/>
+    
     <div
       className={`flex flex-col w-screen h-screen bg-bg justify-between items-center py-14 `}
     >
@@ -99,6 +103,7 @@ function Login() {
         | <p className="text-CTA font-semibold cusText-head">Privacy Policy</p>
       </div>
     </div>
+    </>
   );
 }
 
