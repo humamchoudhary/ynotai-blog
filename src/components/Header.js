@@ -39,13 +39,12 @@ export default function Header() {
           <FiMenu className=" text-bold text-2xl" />
         )}
       </div>
-
       <div
         className={`flex flex-col gap-10 justify-center items-center fixed top-12 font-inter
         transition-all cusText-head
          ${
            isopen ? "left-0" : "left-full"
-         } w-screen h-screen lg:relative px-[0.75rem] py-[1rem] lg:left-0 lg:w-max lg:h-max font-semibold lg:flex-row lg:top-0 sm:left-0`}
+         } w-screen h-screen lg:relative px-[0.75rem] py-[1rem] lg:left-0 lg:w-max bg-white lg:bg-transparent lg:h-max font-semibold lg:flex-row lg:top-0 sm:left-0`}
       >
         <Link href="/" style={{ color: "black" }}>
           Home
@@ -60,6 +59,36 @@ export default function Header() {
         <Link href="/" style={{ color: "black" }}>
           Contact
         </Link>
+
+        <div className="flex flex-col lg:hidden">
+          {!isBlogActive ? (
+            <div
+              className={`flex flex-col gap-5 justify-center items-center font-semibold fixed top-12
+      transition-all cusText-head
+       ${
+         isopen ? "left-0" : "left-full"
+       } bg-white w-screen h-screen lg:relative lg:left-0 lg:w-max font-semibold lg:h-max lg:flex-row lg:top-0 sm:left-0`}
+            >
+              <Link href="/login?redir=blog" style={{ color: "black" }}>
+                Log in
+              </Link>
+
+              <Link href="/signup" className="cta">
+                Sign up
+              </Link>
+            </div>
+          ) : (
+            <div
+              onClick={() => {
+                router.push("/write");
+              }}
+              className="flex flex-row gap-2 items-center justify-center text-md border-2 border-gray-500 px-3 py-2 rounded-full hover:cursor-pointer hover:bg-gray-500 duration-200 hover:text-Light"
+            >
+              <LuEdit className="w-5 h-5" />
+              Write
+            </div>
+          )}
+        </div>
       </div>
       {!isBlogActive ? (
         <div
@@ -78,14 +107,16 @@ export default function Header() {
           </Link>
         </div>
       ) : (
-        <div
-          onClick={() => {
-            router.push("/write");
-          }}
-          className="flex flex-row gap-2 items-center justify-center text-md border-2 border-gray-500 px-3 py-2 rounded-full hover:cursor-pointer hover:bg-gray-500 duration-200 hover:text-Light"
-        >
-          <LuEdit className="w-5 h-5" />
-          Write
+        <div className="hidden lg:flex  flex-row justify-center items-center gap-5">
+          <div
+            onClick={() => {
+              router.push("/write");
+            }}
+            className="flex flex-row gap-2 items-center justify-center text-md border-2 border-gray-500 px-3 py-2 rounded-full hover:cursor-pointer hover:bg-gray-500 duration-200 hover:text-Light"
+          >
+            <LuEdit className="w-5 h-5" />
+            Write
+          </div>
         </div>
       )}
     </div>
