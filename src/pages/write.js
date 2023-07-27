@@ -24,7 +24,7 @@ const extractAndRemoveFirstH1 = (htmlString) => {
   const image = $("img").first().attr("src");
   const plainText = $("html").text();
   const lines = plainText.split("\n");
-  const firstThreeLines = plainText.slice(0, 250);
+  const firstThreeLines = plainText.slice(0, 250) + "...";
   return {
     content: content,
     title: firstH1,
