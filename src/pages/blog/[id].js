@@ -82,10 +82,10 @@ export default function template() {
       />
       <Layout>
         {blog ? (
-          <div className="flex flex-col justify-center  lg:px-32 mx-auto pt-[3rem] lg:pt-[4rem] 2xl:pt-[8rem] pb-[3rem]">
+          <div className="flex flex-col justify-center  lg:px-32 mx-auto pt-[3rem] lg:pt-[4rem] xl:pt-[8rem] pb-[3rem]">
             {blog && (
               <div className="flex flex-col mb-[5rem] gap-8">
-                <h1 className="text-2xl lg:text-4xl 2xl:text-5xl font-black text-gray-800">
+                <h1 className="text-2xl lg:text-4xl xl:text-5xl font-black text-gray-800">
                   {blog.title}
                 </h1>
                 <div className="flex flex-row items-center justify-start">
@@ -103,7 +103,6 @@ export default function template() {
                     </div>
                   </div>
                 </div>
-               
               </div>
             )}
 
@@ -122,7 +121,7 @@ export default function template() {
                     <Link href={"/"}>
                       <li
                         key={index}
-                        className="text-white bg-CTA rounded-lg p-2 bg cusText-md leading-4 2xl::font-medium font-semibold hover:underline  duration-200"
+                        className="text-white bg-CTA rounded-lg p-2 bg cusText-md leading-4 xl:font-medium font-semibold hover:underline  duration-200"
                       >
                         {item}
                       </li>
@@ -150,7 +149,7 @@ export default function template() {
                 Related Posts
               </h2>
               {relatedBlogs.length > 0 ? (
-                <ul className="grid lg:grid-cols-2 grid-cols-1 2xl:grid-cols-3 gap-4">
+                <ul className="grid lg:grid-cols-2 grid-cols-1 xl:grid-cols-3 gap-4">
                   {relatedBlogs.map((blog) => {
                     const milliseconds_rel =
                       blog.date.seconds * 1000 +

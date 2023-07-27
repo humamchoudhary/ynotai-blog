@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ["latin"] });
 export default function About() {
   return (
     <Layout>
-      <div className="flex flex-col justify-center gap-5 lg:px-32 mx-auto pt-[3rem] lg:pt-[4rem] 2xl:pt-[8rem] pb-[3rem]">
+      <div className="flex flex-col justify-center gap-5 lg:px-32 mx-auto pb-[3rem]">
         <div className="flex flex-col mb-16 sm:text-center">
           <a href="/" className="mb-6 sm:mx-auto">
             <div className="flex items-center justify-center w-12 h-12 rounded-full bg-indigo-50">
@@ -70,7 +70,7 @@ export default function About() {
             </p>
           </div>
         </div>
-        <div className="space-y-4 md:space-y-0 flex flex-col-reverse 2xl:flex-row gap-6 lg:items-center lg:gap-12">
+        <div className="space-y-4 md:space-y-0 flex flex-col-reverse xl:flex-row gap-6 lg:items-center lg:gap-12">
           <div className="md:5/12 lg:w-5/12">
             <img
               alt="Welcome"
@@ -179,7 +179,7 @@ export default function About() {
             />
           </div>
         </div>
-        <div className="space-y-4 md:space-y-0 flex flex-col-reverse 2xl:flex-row gap-6 lg:items-center lg:gap-12">
+        <div className="space-y-4 md:space-y-0 flex flex-col-reverse xl:flex-row gap-6 lg:items-center lg:gap-12">
           <div className="md:5/12 lg:w-5/12">
             <img
               alt="Create"

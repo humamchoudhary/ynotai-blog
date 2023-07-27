@@ -40,11 +40,11 @@ function signupPage() {
 
   return (
     <>
-    <Meta/>
-      <div className="flex flex-col h-screen bg-bg justify-between items-center lg:py-8 2xl:py-14  px-6 py-3 min-h-[3rem] w-screen lg:px-[182px] 2xl:px-[364px]  sm:px-6 duration-300">
+      <Meta />
+      <div className="flex flex-col h-screen bg-bg justify-between items-center lg:py-8 xl:py-14  px-6 py-3 min-h-[3rem] w-screen lg:px-[182px] xl:px-[364px]  sm:px-6 duration-300">
         <Image src={"/images/logo.svg"} width={200} height={100} />
-        <div className="flex flex-col w-1/5">
-          <div className="text-center lg:mb-1 2xl:mb-5 font-semibold cusText-3xl">
+        <div className="flex flex-col w-4/5 lg:w-1/5 xl:w-2/6">
+          <div className="text-center lg:mb-1 xl:mb-5 font-semibold cusText-3xl">
             Let Get Started!
           </div>
 
@@ -109,7 +109,7 @@ function signupPage() {
             onClick={() => {
               handleSignUp();
             }}
-            className="bg-CTA text-center py-2 2xl:py-4 rounded-sm mt-4 text-Light rounded-sm hover:cursor-pointer"
+            className="bg-CTA text-center py-2 xl:py-4 rounded-sm mt-4 text-Light rounded-sm hover:cursor-pointer"
           >
             {loading ? <Loader clasname={"loader-WHITE"} /> : "Signup"}
           </div>
@@ -122,11 +122,19 @@ function signupPage() {
           </div>
         </div>
         <div className="flex flex-row gap-4">
-          <p className="text-CTA font-semibold cusText-head">
+          <Link
+            href="/terms"
+            className="text-CTA font-semibold cusText-head hover:cursor-pointer"
+          >
             Terms & Conditions
-          </p>{" "}
+          </Link>{" "}
           |{" "}
-          <p className="text-CTA font-semibold cusText-head">Privacy Policy</p>
+          <Link
+            href="/privacy"
+            className="text-CTA font-semibold cusText-head hover:cursor-pointer"
+          >
+            Privacy Policy
+          </Link>
         </div>
       </div>
     </>

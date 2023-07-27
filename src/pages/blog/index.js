@@ -73,10 +73,10 @@ export default function Blog() {
 
   return (
     <Layout>
-      <div className=" flex flex-col lg:flex-row justify-center pt-10 lg:pt-20 items-start">
+      <div className=" flex flex-col lg:flex-row justify-center items-start">
         <div className="flex basis-3/4 flex-col lg:border-r-[2.5px]  border-gray-200 pt-8  lg:pr-12">
           <div className="flex flex-col gap-3 lg:flex-row items-center  mb-6 ">
-            <div className="flex flex-row items-center px-4 py-[5px] mr-4 border-2 border-t-[2.5px] max-w-full  2xl:max-w-[17rem] lg:max-w-[8rem] rounded-full">
+            <div className="flex flex-row items-center px-4 py-[5px] mr-4 border-2 border-t-[2.5px] max-w-full  xl:max-w-[17rem] lg:max-w-[8rem] rounded-full">
               <RiSearch2Line size={20} color="gray" />
               <Input
                 placeholder="Search..."
@@ -165,7 +165,7 @@ export default function Blog() {
             )}
           </ul>
         </div>
-        <div className="flex 2xl:basis-1/4 lg:basis-2/5 flex-col pl-2 pt-8 sm:pl-12">
+        <div className="flex xl:basis-1/4 lg:basis-2/5 flex-col pl-2 pt-8 sm:pl-12">
           <div className="flex flex-col items center mb-2">
             <h3 className="text-base font-semibold pb-4">
               People you might be interested in

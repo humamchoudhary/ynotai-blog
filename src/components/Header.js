@@ -26,7 +26,13 @@ export default function Header() {
   return (
     <div className="  flex flex-row fixed justify-between items-center text-center border-gray-200 border-b-[3px] px-6 py-3 lg:py-1 2xl:py-3 min-h-[1rem] 2xl:min-h-[3rem] w-screen lg:px-[182px] 2xl:px-[364px] bg-white text-black z-50">
       {/* <h1 className="text-4xl font-bold">LOGO</h1> */}
-      <img src={"/images/logo.svg"} className="w-[120px]  2xl:w-[180px] " />
+      <img
+        src={"/images/logo.svg"}
+        className="w-[120px]  2xl:w-[180px] hover:cursor-pointer"
+        onClick={() => {
+          router.push("/");
+        }}
+      />
       <div
         className="lg:hidden"
         onClick={() => {
