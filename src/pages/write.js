@@ -24,7 +24,7 @@ const extractAndRemoveFirstH1 = (htmlString) => {
   const image = $("img").first().attr("src");
   const plainText = $("html").text();
   const lines = plainText.split("\n");
-  const firstThreeLines = lines.slice(0, 3).join("\n");
+  const firstThreeLines = plainText.slice(0, 250);
   return {
     content: content,
     title: firstH1,
@@ -34,15 +34,11 @@ const extractAndRemoveFirstH1 = (htmlString) => {
 };
 
 export const calculateReadTime = (htmlString, averageWordsPerMinute = 250) => {
-  // Convert HTML string to plain text
   const $ = cheerio.load(htmlString);
   const plainText = $("html").text();
-
-  // Count the number of words in the plain text
   const wordCount = plainText.split(/\s+/).length;
-
-  // Calculate read time in minutes
-  const readTimeMinutes = Math.ceil(wordCount / averageWordsPerMinute);
+  console.log(wordCount);
+  const readTimeMinutes = Math.floor(wordCount / averageWordsPerMinute);
 
   return readTimeMinutes;
 };
