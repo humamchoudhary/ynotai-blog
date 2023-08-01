@@ -23,20 +23,15 @@ function Login() {
       const { result, error } = await signIn(email, password);
 
       if (error) {
-        setErrorStop(error);
+        setErrorStop(error.code);
       } else if (router.query.redir) {
         router.push(`/${router.query.redir}`);
       } else {
-        router.push("/blog");
+        router.push("/");
       }
     }
     setLoading(false);
   }
-  useEffect(() => {
-    if (router) {
-      console.log(router);
-    }
-  }, [router]);
 
   return (
     <>

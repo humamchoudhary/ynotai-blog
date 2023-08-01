@@ -13,7 +13,7 @@ export default function Header() {
   useEffect(() => {
     try {
       const { userData } = JSON.parse(localStorage.getItem("userData"));
-      if (router && router.pathname.includes("blog")) {
+      if (router) {
         if (userData.canWrite) {
           setBlogActive(true);
         }

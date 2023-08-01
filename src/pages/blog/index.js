@@ -62,7 +62,7 @@ export default function Blog() {
           return item.data.title.toLowerCase().includes(search.toLowerCase());
         }
       });
-      console.log(searchedBlogs);
+
       setBlog(searchedBlogs);
     } else {
       getAllData("blogs").then(({ result, error }) => {
@@ -73,7 +73,7 @@ export default function Blog() {
 
   return (
     <Layout>
-      <div className=" flex flex-col lg:flex-row justify-center items-start">
+      <div className=" flex flex-col lg:flex-row justify-center  items-start">
         <div className="flex basis-3/4 flex-col lg:border-r-[2.5px]  border-gray-200 pt-8  lg:pr-12">
           <div className="flex flex-col gap-3 lg:flex-row items-center  mb-6 ">
             <div className="flex flex-row items-center px-4 py-[5px] mr-4 border-2 border-t-[2.5px] max-w-full  xl:max-w-[17rem] lg:max-w-[8rem] rounded-full">
@@ -141,7 +141,7 @@ export default function Blog() {
                             {date.toDateString()}
                           </p>
                           <p className="text-gray-500 cusText-md font-normal  px-4 py-1.5 ml-4 bg-gray-200 rounded-full">
-                            {Math.floor(item.data.read_time / 60)} mins read
+                            {Math.floor(item.data.read_time)} mins read
                           </p>
                         </div>
                       </div>

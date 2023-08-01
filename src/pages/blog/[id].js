@@ -37,22 +37,22 @@ export default function template() {
 
   useEffect(() => {
     async function getRelate(cat) {
-      const { result } = await getData("categories", cat);
       let data = [];
+      await getData("categories", cat).then(async ({ result }) => {
+        if (result.blogIds && result.blogIds.includes(blog.id)) {
+          result.blogIds.splice(result.blogIds.indexOf(blog.id), 1);
 
-      if (result.blogIds.includes(blog.id)) {
-        result.blogIds.splice(result.blogIds.indexOf(blog.id), 1);
-
-        if (result.blogIds.length < 4) {
-          const promises = result.similarCat.map((item) => getRelate(item));
-          const relatedData = await Promise.all(promises);
-          relatedData.forEach((relatedBlogs) => data.push(...relatedBlogs));
-        } else {
+          if (result.blogIds.length < 4) {
+            const promises = result.similarCat.map((item) => getRelate(item));
+            const relatedData = await Promise.all(promises);
+            relatedData.forEach((relatedBlogs) => data.push(...relatedBlogs));
+          } else {
+            data.push(...result.blogIds);
+          }
+        } else if (result.blogIds) {
           data.push(...result.blogIds);
         }
-      } else {
-        data.push(...result.blogIds);
-      }
+      });
 
       return data;
     }
@@ -97,7 +97,7 @@ export default function template() {
                     <div className="flex flex-row gap-1 items-center">
                       <HiOutlineClock size={20} color="gray" />
                       <p className="text-gray-500 cusText-md leading-5 ">
-                        {Math.floor(blog.read_time / 60)} mins read •{" "}
+                        {Math.floor(blog.read_time)} mins read •{" "}
                         {date.toDateString()}
                       </p>
                     </div>
@@ -118,11 +118,8 @@ export default function template() {
               <div className="flex flex-col mx-auto justify-center gap-4  w-full mb-12">
                 <ul className="flex flex-row gap-2">
                   {blog.tags.map((item, index) => (
-                    <Link href={"/"}>
-                      <li
-                        key={index}
-                        className="text-white bg-CTA rounded-lg p-2 bg cusText-md leading-4 xl:font-medium font-semibold hover:underline  duration-200"
-                      >
+                    <Link key={index} href={"/"}>
+                      <li className="text-white bg-CTA rounded-lg p-2 bg cusText-md leading-4 xl:font-medium font-semibold hover:underline  duration-200">
                         {item}
                       </li>
                     </Link>
@@ -162,18 +159,18 @@ export default function template() {
                         className="flex basis-1/3 flex-col h-full border-2 border-gray-200 border-opacity-60 max-w-[24rem] rounded-lg overflow-hidden"
                       >
                         <img
-                          class="lg:h-48 md:h-36 w-full object-cover object-center"
+                          className="lg:h-48 md:h-36 w-full object-cover object-center"
                           src={blog.image}
                           alt="blog"
                         />
-                        <div class="p-6">
-                          <h2 class="tracking-widest cusText-md  font-medium text-gray-500 mb-1">
+                        <div className="p-6">
+                          <h2 className="tracking-widest cusText-md  font-medium text-gray-500 mb-1">
                             {blog.category}
                           </h2>
-                          <h1 class="line-clamp-2  cusText-md font-bold text-gray-800 mb-3">
+                          <h1 className="line-clamp-2  cusText-md font-bold text-gray-800 mb-3">
                             {blog.title}
                           </h1>
-                          <p class="line-clamp-2 font-normal text-gray-500 leading-relaxed mb-3">
+                          <p className="line-clamp-2 font-normal text-gray-500 leading-relaxed mb-3">
                             {blog.description}
                           </p>
                           <div className="flex flex-row items-center justify-between">
@@ -184,7 +181,7 @@ export default function template() {
                               Learn more
                               <AiOutlineArrowRight />
                             </Link>
-                            <p class="flex-shrink-0 text-gray-500 cusText-md ">
+                            <p className="flex-shrink-0 text-gray-500 cusText-md ">
                               {Math.floor(blog.read_time / 60)} read •{" "}
                               {date.toDateString()}
                             </p>

@@ -23,8 +23,6 @@ function signupPage() {
     if (username && password && occu && email) {
       setLoading(true);
       const { result, error } = await signUp(email, password, username, occu);
-      console.log(result);
-      console.log(error);
       setLoading(false);
       if (!error) {
         return router.push("/login");
@@ -32,7 +30,6 @@ function signupPage() {
         setErrorStop(error.message);
       }
     } else {
-      console.log("empty");
       setErrorStop("Please Fill All Feilds");
     }
   }

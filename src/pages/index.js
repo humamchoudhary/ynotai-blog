@@ -62,7 +62,7 @@ export default function Blog() {
           return item.data.title.toLowerCase().includes(search.toLowerCase());
         }
       });
-      console.log(searchedBlogs);
+
       setBlog(searchedBlogs);
     } else {
       getAllData("blogs").then(({ result, error }) => {
@@ -141,7 +141,7 @@ export default function Blog() {
                             {date.toDateString()}
                           </p>
                           <p className="text-gray-500 cusText-md font-normal  px-4 py-1.5 ml-4 bg-gray-200 rounded-full">
-                            {Math.floor(item.data.read_time / 60)} mins read
+                            {Math.floor(item.data.read_time)} mins read
                           </p>
                         </div>
                       </div>

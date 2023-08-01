@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-
-import Link from "next/link";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 import { useAuthContext } from "@/context/AuthContext";
@@ -23,7 +21,6 @@ const extractAndRemoveFirstH1 = (htmlString) => {
   const content = $.html();
   const image = $("img").first().attr("src");
   const plainText = $("html").text();
-  const lines = plainText.split("\n");
   const firstThreeLines = plainText.slice(0, 250) + "...";
   return {
     content: content,
@@ -37,7 +34,6 @@ export const calculateReadTime = (htmlString, averageWordsPerMinute = 250) => {
   const $ = cheerio.load(htmlString);
   const plainText = $("html").text();
   const wordCount = plainText.split(/\s+/).length;
-  console.log(wordCount);
   const readTimeMinutes = Math.floor(wordCount / averageWordsPerMinute);
 
   return readTimeMinutes;
@@ -53,7 +49,6 @@ function write() {
   const [allCat, setAllCat] = useState([]);
 
   useEffect(() => {
-    console.log(user);
     try {
       const curruser = JSON.parse(localStorage.getItem("userData")).userData;
       setcuruser(JSON.parse(localStorage.getItem("userData")).userData);
@@ -85,8 +80,6 @@ function write() {
         category: cat,
         read_time: read_time,
       };
-      console.log(data);
-      console.log("data");
       if (
         title &&
         content &&
@@ -100,16 +93,13 @@ function write() {
         read_time
       ) {
         addData("blogs", id, data).then(({ result, error }) => {
-          console.log(result, error);
           if (error) {
             setError(error);
-            console.log("error", error);
           } else {
             udateData("categories", cat, {
               blogIds: arrayUnion(id),
             });
             router.push(`/blog/${id}`);
-            // console.log("done", data);
           }
         });
       } else {
