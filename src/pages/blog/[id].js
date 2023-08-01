@@ -92,7 +92,7 @@ export default function template() {
                   <div className="flex flex-col">
                     <UserCard
                       textSize="cusText-head"
-                      data={{ writerId: "1A8qm4wFZwguv7QyBgy3k6q1NkF3" }}
+                      data={{ writerId: blog.writerId }}
                     />
                     <div className="flex flex-row gap-1 items-center">
                       <HiOutlineClock size={20} color="gray" />
@@ -129,14 +129,14 @@ export default function template() {
                   <UserCard
                     avatarStyle="rounded-full mr-3 h-[80px] w-[80px]"
                     textSize="text-head"
-                    data={{ writerId: "1A8qm4wFZwguv7QyBgy3k6q1NkF3" }}
+                    data={{ writerId: blog.writerId }}
                   />
-                  <button
+                  {/* <button
                     disabled
                     className="px-4 py-2 border-2 text-gray-800 font-medium rounded-full hover:bg-CTA hover:text-white duration-200"
                   >
                     Follow
-                  </button>
+                  </button> */}
                 </div>
               </div>
             )}
@@ -148,10 +148,7 @@ export default function template() {
               {relatedBlogs.length > 0 ? (
                 <ul className="grid lg:grid-cols-2 grid-cols-1 xl:grid-cols-3 gap-4">
                   {relatedBlogs.map((blog) => {
-                    const milliseconds_rel =
-                      blog.date.seconds * 1000 +
-                      blog.date.nanoseconds / 1000000;
-                    const date_rel = new Date(milliseconds_rel);
+                    console.log(blog);
 
                     return (
                       <li
